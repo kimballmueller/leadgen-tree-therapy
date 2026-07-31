@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tree Therapy — NC Tree Service</title>
+  <meta name="description" content="Tree Therapy in NC. Tree Service information, service overview, and contact details.">
+  <meta name="theme-color" content="#16211a">
+  <style>
+    :root {
+      --bg: #f8f6f1;
+      --panel: #ffffff;
+      --text: #16202a;
+      --muted: #5d6974;
+      --line: #dde3e8;
+      --accent: #3f6a45;
+      --accent-dark: #2f4f35;
+      --surface: #eef3ec;
+      --deep: #16211a;
+      --radius: 22px;
+      --shadow: 0 18px 45px rgba(12,18,24,.08);
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #fbfaf7 0%, var(--bg) 100%);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .site-header { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); background: rgba(248,246,241,.84); border-bottom: 1px solid rgba(221,227,232,.7); }
+    .site-header .wrap { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; gap: 20px; }
+    .brand { display: flex; flex-direction: column; gap: 3px; }
+    .brand strong { font-size: 1rem; letter-spacing: -.02em; }
+    .brand span { color: var(--muted); font-size: .9rem; }
+    .header-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .desktop-call-label { display: inline; }
+    .mobile-call-label { display: none; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; padding: 13px 18px; font-weight: 600; transition: .2s ease; }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .btn-secondary { border: 1px solid var(--line); background: rgba(255,255,255,.8); }
+    .hero { padding: 64px 0 40px; position: relative; overflow: clip; }
+    .hero::before { content: ''; position: absolute; inset: -140px auto auto -80px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 72%); pointer-events: none; }
+    .hero::after { content: ''; position: absolute; inset: 20px -120px auto auto; width: 320px; height: 320px; background: radial-gradient(circle, rgba(255,255,255,.65) 0%, rgba(255,255,255,0) 74%); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 42px; align-items: start; position: relative; z-index: 1; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 700; margin-bottom: 14px; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4.9rem); line-height: .96; letter-spacing: -.05em; margin: 0 0 18px; max-width: 10ch; }
+    .hero p.lead { font-size: 1.06rem; color: var(--muted); margin: 0 0 18px; max-width: 56ch; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 24px; }
+    .meta-pill { background: white; border: 1px solid var(--line); border-radius: 999px; padding: 10px 14px; font-size: .94rem; color: var(--muted); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+    .hero-note { color: var(--muted); font-size: .95rem; margin-top: 12px; max-width: 42ch; }
+    .service-chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+    .service-chip { display: inline-flex; align-items: center; border-radius: 999px; padding: 10px 14px; background: rgba(255,255,255,.72); border: 1px solid rgba(221,227,232,.9); color: var(--text); font-size: .92rem; font-weight: 600; }
+    .subtle-link { color: var(--muted); font-weight: 600; }
+    .subtle-link:hover { color: var(--text); }
+    .hero-cta-card { background: linear-gradient(180deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.94) 100%); border: 1px solid rgba(221,227,232,.95); border-radius: 30px; box-shadow: 0 26px 65px rgba(12,18,24,.10); padding: 26px; }
+    .hero-cta-top { display: grid; gap: 10px; margin-bottom: 18px; }
+    .hero-cta-top h3 { margin: 0; font-size: 1.6rem; letter-spacing: -.04em; }
+    .hero-cta-top p { margin: 0; color: var(--muted); }
+    .hero-cta-proof { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 18px; }
+    .proof-cell { border: 1px solid var(--line); border-radius: 18px; padding: 14px 12px; background: rgba(255,255,255,.76); }
+    .proof-cell span { display: block; color: var(--muted); font-size: .78rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+    .proof-cell strong { display: block; font-size: 1rem; letter-spacing: -.02em; }
+    .hero-callout { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; margin-bottom: 16px; }
+    .hero-callout span { color: var(--muted); font-size: .92rem; display: block; margin-bottom: 4px; }
+    .hero-callout strong { font-size: 1.05rem; letter-spacing: -.02em; }
+    .hero-mini-form { display: grid; gap: 12px; }
+    .hero-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .hero-mini-form label { display: grid; gap: 7px; font-size: .9rem; font-weight: 600; }
+    .hero-mini-note { color: var(--muted); font-size: .9rem; margin-top: 4px; }
+    .form-microcopy { color: var(--muted); font-size: .82rem; line-height: 1.5; margin-top: 2px; }
+    .hero-bullets { display: grid; gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; }
+    .hero-bullets li { display: flex; align-items: flex-start; gap: 10px; color: var(--text); }
+    .hero-bullets li::before { content: '•'; color: var(--accent); font-weight: 700; line-height: 1; margin-top: 2px; }
+    .facts { padding: 8px 0 54px; }
+    .facts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .fact { background: white; border: 1px solid var(--line); border-radius: 20px; padding: 22px; }
+    .fact span { display: block; color: var(--muted); font-size: .9rem; margin-bottom: 8px; }
+    .fact strong { display: block; font-size: 1.1rem; letter-spacing: -.02em; }
+    .photo-section { padding: 8px 0 56px; }
+    .photo-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 20px; align-items: center; }
+    .photo-copy h2 { margin: 0 0 12px; font-size: clamp(1.8rem, 3vw, 2.7rem); line-height: 1.03; letter-spacing: -.04em; max-width: 12ch; }
+    .photo-copy p { margin: 0; color: var(--muted); max-width: 44ch; }
+    .photo-card { background: white; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+    .photo-card img { width: 100%; height: 340px; object-fit: cover; object-position: center center; display: block; filter: saturate(.96) contrast(1.02); }
+    section { padding: 26px 0 64px; }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 24px; }
+    .section-head h2 { font-size: clamp(1.8rem, 3vw, 3rem); line-height: 1.02; letter-spacing: -.04em; margin: 0; max-width: 10ch; }
+    .section-head p { margin: 0; color: var(--muted); max-width: 50ch; }
+    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .service-card { background: white; border: 1px solid var(--line); border-radius: 22px; padding: 24px; }
+    .service-card .kicker { display: inline-block; margin-bottom: 12px; font-size: .78rem; text-transform: uppercase; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+    .service-card h3 { margin: 0 0 10px; font-size: 1.25rem; letter-spacing: -.03em; }
+    .service-card p { margin: 0; color: var(--muted); }
+    .trust-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 18px; align-items: stretch; }
+    .trust-panel { border-radius: 24px; padding: 30px; }
+    .trust-panel.light { background: var(--surface); }
+    .trust-panel.dark { background: var(--deep); color: white; }
+    .trust-panel h3 { margin: 0 0 12px; font-size: 1.5rem; letter-spacing: -.03em; }
+    .trust-panel p { margin: 0; }
+    .trust-panel.dark p { color: rgba(255,255,255,.8); }
+    .trust-list { margin: 18px 0 0; padding-left: 20px; display: grid; gap: 10px; }
+    .trust-list li { color: inherit; }
+    .contact-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: 18px; }
+    .contact-card, .form-card { background: white; border: 1px solid var(--line); border-radius: 24px; padding: 28px; }
+    .contact-card h2, .form-card h3 { margin-top: 0; letter-spacing: -.04em; }
+    .contact-points { display: grid; gap: 16px; margin-top: 24px; }
+    .contact-point span { display: block; color: var(--muted); font-size: .9rem; margin-bottom: 6px; }
+    .contact-point strong, .contact-point a { font-size: 1.03rem; font-weight: 600; }
+    form { display: grid; gap: 14px; }
+    .field-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    label { display: grid; gap: 8px; font-size: .92rem; font-weight: 600; }
+    input, select, textarea { width: 100%; border: 1px solid var(--line); border-radius: 16px; padding: 14px 15px; font: inherit; background: #fff; color: var(--text); }
+    textarea { min-height: 130px; resize: vertical; }
+    .site-footer { padding: 26px 0 52px; border-top: 1px solid rgba(221,227,232,.8); }
+    .site-footer .wrap { display: flex; justify-content: space-between; gap: 20px; align-items: end; flex-wrap: wrap; }
+    .footer-note { color: var(--muted); font-size: .94rem; }
+    .footer-brand strong { display: block; margin-bottom: 6px; }
+    .mobile-sticky-bar { display: none; }
+    @media (max-width: 920px) {
+      .site-header .wrap { align-items: center; }
+      .header-actions { width: auto; justify-content: flex-end; }
+      .hero-grid, .photo-grid, .trust-grid, .contact-grid { grid-template-columns: 1fr; }
+      .facts-grid, .services-grid { grid-template-columns: 1fr; }
+      .hero-mini-grid { grid-template-columns: 1fr; }
+      .hero-cta-proof { grid-template-columns: 1fr 1fr 1fr; }
+      .field-grid { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: start; }
+      .hero-callout { flex-direction: column; align-items: flex-start; }
+      .hero-callout .btn { width: 100%; }
+      .photo-card img { height: 280px; }
+    }
+    @media (max-width: 640px) {
+      .site-header .wrap { padding: 12px 18px; gap: 12px; align-items: center; justify-content: space-between; }
+      .brand strong { font-size: .95rem; }
+      .brand span { font-size: .82rem; }
+      .wrap { padding: 0 18px; }
+      .site-header .btn { min-height: 42px; padding: 10px 14px; font-size: .92rem; }
+      .header-actions { width: auto; flex: 0 0 auto; gap: 0; }
+      .header-actions .btn-secondary { display: none; }
+      .header-actions .btn-primary { border-radius: 999px; white-space: nowrap; box-shadow: none; }
+      .desktop-call-label { display: none; }
+      .mobile-call-label { display: inline; }
+      .hero { padding: 34px 0 26px; }
+      h1 { max-width: none; font-size: clamp(2.1rem, 10vw, 3rem); line-height: 1.02; }
+      .hero p.lead { font-size: 1rem; }
+      .hero-meta { gap: 8px; }
+      .meta-pill { width: 100%; justify-content: center; text-align: center; }
+      .service-chip-row { gap: 8px; }
+      .service-chip { width: calc(50% - 4px); justify-content: center; text-align: center; padding: 10px 12px; }
+      .hero-actions { width: 100%; }
+      .hero-actions .btn { width: 100%; }
+      .btn { min-height: 50px; padding: 14px 16px; }
+      .hero-cta-card, .contact-card, .form-card, .trust-panel, .service-card, .fact { padding: 20px; border-radius: 20px; }
+      .hero-cta-top h3, .contact-card h2, .form-card h3 { font-size: 1.45rem; }
+      .hero-cta-proof { grid-template-columns: 1fr; }
+      .photo-card img { height: 220px; }
+      section { padding: 20px 0 44px; }
+      .facts { padding: 2px 0 36px; }
+      .site-footer { padding: 18px 0 90px; }
+      .contact-point strong, .contact-point a { overflow-wrap: anywhere; }
+      .mobile-sticky-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; padding: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border: 1px solid rgba(221,227,232,.95); border-radius: 20px; box-shadow: 0 16px 44px rgba(12,18,24,.14); }
+      .mobile-sticky-bar .btn { min-height: 52px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">
+        <strong>Tree Therapy</strong>
+        <span>NC Tree Service</span>
+      </div>
+      <div class="header-actions">
+        <a class="btn btn-secondary" href="#contact">Request info</a>
+        <a class="btn btn-primary" href="tel:+17049626013"><span class="desktop-call-label">Call 7049626013</span><span class="mobile-call-label">Call now</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">NC local service</div>
+          <h1>Safe work. Clean property. Strong curb appeal.</h1>
+          <p class="lead">Tree Therapy serves NC with pruning, removals, cleanup, and ongoing tree care from a local crew. Call now or send a request to ask about service, scheduling, and next steps.</p>
+          <div class="hero-meta">
+            <div class="meta-pill">5.0 / 5 from 152 reviews</div>
+            <div class="meta-pill">Tree Service</div>
+            <div class="meta-pill">7049626013</div>
+          </div>
+          <div class="service-chip-row"><span class="service-chip">Tree trimming</span><span class="service-chip">Tree removal</span><span class="service-chip">Storm cleanup</span><span class="service-chip">Stump grinding</span></div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Request service</a>
+            <a class="btn btn-secondary" href="tel:+17049626013">Call now</a>
+          </div>
+          <div class="hero-note">Call, request service, or ask about scheduling and availability.</div>
+          <a class="subtle-link" href="https://www.treetherapy704.com/" target="_blank" rel="noopener">View current website</a>
+        </div>
+        <div class="hero-cta-card">
+          <div class="hero-cta-top">
+            <div class="eyebrow" style="margin-bottom:0;">Request service</div>
+            <h3>Get a callback or call now.</h3>
+            <p>Tell us what you need and the best number to reach you.</p>
+          </div>
+          <div class="hero-cta-proof">
+            <div class="proof-cell"><span>Area</span><strong>NC</strong></div>
+            <div class="proof-cell"><span>Service</span><strong>Tree Service</strong></div>
+            <div class="proof-cell"><span>Signal</span><strong>5.0 / 5 from 152 reviews</strong></div>
+          </div>
+          <div class="hero-callout">
+            <div>
+              <span>Call for service</span>
+              <strong>7049626013</strong>
+            </div>
+            <a class="btn btn-primary" href="tel:+17049626013">Call now</a>
+          </div>
+          <form class="hero-mini-form" action="https://formspree.io/f/xpwzgkqy" method="POST">
+            <input type="hidden" name="source" value="hero_form">
+            <input type="hidden" name="business_name" value="Tree Therapy">
+            <input type="hidden" name="city" value="NC">
+            <div class="hero-mini-grid">
+              <label>Name<input type="text" name="name" required></label>
+              <label>Phone<input type="tel" name="phone" required></label>
+            </div>
+            <label>Service needed
+              <select name="service">
+                <option value="">Select one</option>
+                <option>Tree trimming</option>
+                <option>Tree removal</option>
+                <option>Storm cleanup</option>
+                <option>Stump grinding</option>
+                <option>General inquiry</option>
+              </select>
+            </label>
+            <button class="btn btn-primary" type="submit">Request a callback</button>
+            <div class="hero-mini-note">Prefer to talk first? Call directly and ask about scheduling, availability, and next steps.</div>
+            <div class="form-microcopy">By sending this form, the business gets your contact details so they can follow up about the service request.</div>
+          </form>
+          <ul class="hero-bullets">
+            <li>Professional scheduling</li>
+            <li>Jobsite cleanup</li>
+            <li>Work done with care around your property</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts">
+      <div class="wrap facts-grid">
+        <div class="fact"><span>Service area</span><strong>NC</strong></div>
+        <div class="fact"><span>Business type</span><strong>Tree Service</strong></div>
+        <div class="fact"><span>Customer signal</span><strong>5.0 / 5 from 152 reviews</strong></div>
+      </div>
+    </section>
+
+    <section class="photo-section"><div class="wrap photo-grid"><div class="photo-copy"><div class="eyebrow">Service photo</div><h2>Practical work, done with care.</h2><p>Tree care, removals, and cleanup work that keeps a property safe, tidy, and easier to manage.</p></div><div class="photo-card"><img src="service-photo.jpg" alt="Tree Service service photo for Tree Therapy"></div></div></section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What customers usually need help with.</h2>
+          <p>Common service requests homeowners usually call about first.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card"><span class="kicker">Service</span><h3>Tree trimming</h3><p>Targeted trimming that supports tree health, curb appeal, and cleaner-looking property lines.</p></div><div class="service-card"><span class="kicker">Service</span><h3>Tree removal</h3><p>Safe removal work for trees that are damaged, overgrown, or no longer a fit for the property.</p></div><div class="service-card"><span class="kicker">Service</span><h3>Storm cleanup</h3><p>Quick cleanup help when weather leaves branches, debris, or unsafe conditions behind.</p></div><div class="service-card"><span class="kicker">Service</span><h3>Stump grinding</h3><p>A cleaner finish that helps reclaim usable space and improves the overall look of the yard.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap trust-grid">
+        <div class="trust-panel light">
+          <div class="eyebrow">Why choose us</div>
+          <h3>Straight answers. Solid service. No runaround.</h3>
+          <p>Homeowners want clear communication, dependable scheduling, and work done with care.</p>
+        </div>
+        <div class="trust-panel dark">
+          <div class="eyebrow" style="color: rgba(255,255,255,.72);">What customers value</div>
+          <h3>Clear communication from the first call onward.</h3>
+          <p>Simple next steps and professional follow-through help people feel comfortable reaching out.</p>
+          <ul class="trust-list">
+            <li>Professional scheduling</li><li>Jobsite cleanup</li><li>Work done with care around your property</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact-grid">
+        <div class="contact-card">
+          <div class="eyebrow">Contact</div>
+          <h2>Make it easy for someone to reach out.</h2>
+          <p style="color: var(--muted);">Call directly or send a message to ask about service, scheduling, and next steps.</p>
+          <div class="contact-points">
+            <div class="contact-point">
+              <span>Phone</span>
+              <a href="tel:+17049626013">7049626013</a>
+            </div>
+            <div class="contact-point">
+              <span>Location</span>
+              <strong>Lake Norman<br>NC</strong>
+            </div>
+            <div class="contact-point">
+              <span>Business</span>
+              <strong>Tree Service</strong>
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3>Request information</h3>
+          <form id="contactForm" action="https://formspree.io/f/xpwzgkqy" method="POST">
+            <input type="hidden" name="source" id="leadSource">
+            <input type="hidden" name="business_name" value="Tree Therapy">
+            <input type="hidden" name="city" value="NC">
+            <div class="field-grid">
+              <label>Name<input type="text" name="name" required></label>
+              <label>Phone<input type="tel" name="phone" required></label>
+            </div>
+            <div class="field-grid">
+              <label>Email<input type="email" name="email"></label>
+              <label>Service needed
+                <select name="service">
+                  <option value="">Select one</option>
+                  <option>Tree trimming</option>
+                  <option>Tree removal</option>
+                  <option>Storm cleanup</option>
+                  <option>Stump grinding</option>
+                  <option>General inquiry</option>
+                </select>
+              </label>
+            </div>
+            <label>Project details<textarea name="message" placeholder="Tell us a little about the work you need."></textarea></label>
+            <button class="btn btn-primary" type="submit">Send request</button>
+            <div class="form-microcopy">This request goes to the business so they can reply about service, scheduling, and next steps.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-brand">
+        <strong>Tree Therapy</strong>
+        <div class="footer-note">NC Tree Service</div>
+      </div>
+      <div class="footer-note">© 2026 Tree Therapy</div>
+    </div>
+  </footer>
+
+  <div class="mobile-sticky-bar">
+    <a class="btn btn-secondary" href="#contact">Request service</a>
+    <a class="btn btn-primary" href="tel:+17049626013">Call now</a>
+  </div>
+
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var src = params.get('utm_campaign') || params.get('utm_source') || window.location.pathname;
+      var el = document.getElementById('leadSource');
+      if (el) el.value = src;
+    })();
+  </script>
+</body>
+</html>
